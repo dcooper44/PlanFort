@@ -11,5 +11,9 @@ namespace PlanFort.Models.ViewModels
         public string Category { get; set; }
 
         public int TripID { get; set; }
+
+        public string businessId { get; set; }
+
+        public string BusinessType { get; set; }
     }
 }

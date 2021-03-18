@@ -30,13 +30,18 @@ namespace PlanFort.Controllers
       
         
      
-        public IActionResult BusinessForm()
+        public IActionResult BusinessForm(string city, int TripId)
         {
-            return View();
+
+            var viewModel = new BusinessFormVM();
+
+            viewModel.City = city;
+            viewModel.TripID = TripId;
+            return View(viewModel);
         }
-        public async Task<IActionResult> BusinessFormResult(string city, int TripId)
+        public async Task<IActionResult> BusinessFormResult(BusinessFormVM model)
         {
-            var response = await _yelpClient.GetBusinessByCity(city);
+            var response = await _yelpClient.GetBusinessByCity(model.City, model.BusinessType);
 
             var viewModel = new BusinessFormResultVM();
             var results = response.businesses;
@@ -47,7 +52,7 @@ namespace PlanFort.Controllers
                 { Name = results.name, title = results.categories[0].title, id = results.id })
                 .ToList();
 
-            viewModel.TripID = TripId;
+            viewModel.TripID = model.TripID;
             
 
             return View(viewModel);

@@ -1,12 +1,19 @@
 ﻿@model PlanFort.Models.ViewModels.BusinessFormVM
-<form asp-controller="Event" asp-action="BusinessFormResult" method="post">
 
-    <label asp-for="City"></label>
-    <input asp-for="City" />
 
-    <label asp-for="Category"></label>
-    <input asp-for="Category" />
 
-    <button>Search</button>
+    <form asp-controller="Business" asp-action="BusinessFormResult" method="post">
 
-</form>
+
+        <label asp-for="BusinessType">Choose a Business Type:</label>
+
+        <select asp-for="BusinessType" name="BusinessType">
+            <option value="bars">bars</option>
+            <option value="saab">Saab</option>
+            <option value="mercedes">Mercedes</option>
+            <option value="audi">Audi</option>
+        </select>
+
+        <button>Search</button>
+
+    </form>
