@@ -93,7 +93,8 @@ namespace PlanFort.Controllers
             {
                 var response = await _openWeatherClient.GetWeather(trip.City);
                 var weather = new WeatherVM();
-                weather.Description = response.weather[0].description;
+                weather.Description = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(response.weather[0].description.ToLower());
+                //weather.Description = response.weather[0].description;
                 weather.Icon = response.weather[0].icon;
                 weather.Temp = (int) response.main.temp;
 
