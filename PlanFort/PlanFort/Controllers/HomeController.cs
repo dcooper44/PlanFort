@@ -97,8 +97,8 @@ namespace PlanFort.Controllers
                 //weather.Description = response.weather[0].description;
                 weather.Icon = response.weather[0].icon;
                 weather.Temp = (int) response.main.temp;
-
                 weather.Name = response.name;
+
                 viewModel.Weather.Add(weather);
             }
 

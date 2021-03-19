@@ -40,12 +40,17 @@ namespace PlanFort.Services
             //Calling SeatGeek API and searching events for certain cities
         }
 
+        /// <summary>
+        /// Calling SeatGeek API and searching events for specific event ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<EventsResponseModel> GetEventByID(int id )
         {
             return await GetAsync<EventsResponseModel>
                 ($"/events/?id={id}&client_id=MjE1NjY1OTZ8MTYxNDY1MTAwMC41MDk3Mjk2");
 
-            //Calling SeatGeek API and searching events for certain cities
+           
         }
 
 
@@ -57,7 +62,6 @@ namespace PlanFort.Services
             {
                 var content = await response.Content.ReadAsStreamAsync();
 
-                // var jsonOptions = new JsonSerializerOptions();
 
                 var model = await JsonSerializer.DeserializeAsync<T>(content);
 

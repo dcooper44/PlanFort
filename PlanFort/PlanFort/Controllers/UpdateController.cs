@@ -34,7 +34,6 @@ namespace PlanFort.Controllers
             _planFortDBContext.SaveChanges();
 
             return RedirectToAction("ViewTrips", "Home");
-
         }
     }
 }
